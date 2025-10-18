@@ -1,0 +1,257 @@
+// Monquotidien Massira — Vanilla JS
+// Data ingestion: parses Eat.ma Monquotidien page via r.jina.ai for menu images.
+// Sources: Eat.ma (https://www.eat.ma/marrakech/monquotidien), TopMenu (if available), mon-quotidien.ma.
+
+(function(){
+  const $ = (sel, ctx=document)=>ctx.querySelector(sel);
+  const $$ = (sel, ctx=document)=>Array.from(ctx.querySelectorAll(sel));
+
+  // Header/nav
+  const navToggle = $('.nav-toggle');
+  const navMenu = $('#nav-menu');
+  navToggle?.addEventListener('click', ()=>{
+    const open = navMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  $$('#nav-menu a').forEach(a=>a.addEventListener('click', ()=>{
+    navMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+  }));
+
+  // Year + cookie
+  const Y = new Date().getFullYear();
+  const yEl = $('#year'); if (yEl) yEl.textContent = Y;
+  const cookie = $('#cookie'); const cookieBtn = $('#cookie-accept');
+  try { if (!localStorage.getItem('cookie-ok')) cookie.style.display='block'; } catch(e){}
+  cookieBtn?.addEventListener('click', ()=>{ try{localStorage.setItem('cookie-ok','1');}catch(e){} cookie.style.display='none'; });
+
+  // Smooth focus on anchor jump
+  $$('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href').slice(1);
+      const tgt = document.getElementById(id);
+      if (tgt) { tgt.setAttribute('tabindex','-1'); setTimeout(()=>tgt.focus({preventScroll:true}), 300); }
+    });
+  });
+
+  // i18n
+  const I18N = {
+    fr: {
+      'nav.about':'À propos','nav.menu':'Menu','nav.gallery':'Galerie','nav.reviews':'Avis','nav.contact':'Contact',
+      'hero.sub':'frais • diversifié • accessible',
+      'cta.viewMenu':'Voir le menu','cta.call':'Appeler','cta.directions':'Itinéraire',
+      'about.title':'À propos','about.p1':'Bienvenue chez Monquotidien Massira à Marrakech. Café de quartier, boulangerie et pâtisserie artisanales, nous proposons également des petits-déjeuners et une cuisine conviviale tout au long de la journée.','about.p2':'Dans l’esprit de la marque Mon Quotidien — sain, frais, accessible et diversifié — nos produits sont préparés avec soin et servis dans une ambiance chaleureuse.','about.p3':'Du croissant du matin aux plats chauds pour le déjeuner, en passant par les desserts gourmands, il y a toujours quelque chose de bon pour chaque moment.',
+      'about.hours.title':'Horaires','about.hours.note':'Vérifier les horaires par téléphone.',
+      'menu.title':'Menu','menu.note':'Certaines références peuvent varier selon disponibilité. Prix affichés uniquement si disponibles publiquement.',
+      'menu.cat.all':'Tout','menu.cat.breakfast':'Petit-déjeuner','menu.cat.viennoiseries':'Viennoiseries','menu.cat.salads':'Salades','menu.cat.hot':'Plats chauds','menu.cat.drinks':'Boissons',
+      'menu.download':'Télécharger le menu (PDF)',
+      'gallery.title':'Galerie',
+      'reviews.title':'Avis',
+      'contact.title':'Nous trouver'
+    },
+    en: {
+      'nav.about':'About','nav.menu':'Menu','nav.gallery':'Gallery','nav.reviews':'Reviews','nav.contact':'Contact',
+      'hero.sub':'fresh • diverse • accessible',
+      'cta.viewMenu':'View Menu','cta.call':'Call','cta.directions':'Get Directions',
+      'about.title':'About','about.p1':'Welcome to Monquotidien Massira in Marrakech. Neighborhood café, bakery and pastry shop, we also serve breakfast and comforting meals all day long.','about.p2':'True to the brand spirit — healthy, fresh, accessible and diverse — our products are prepared with care and served in a warm atmosphere.','about.p3':'From the morning croissant to hot dishes for lunch and delicious desserts, there’s always something good for every moment.',
+      'about.hours.title':'Hours','about.hours.note':'Verify hours by phone.',
+      'menu.title':'Menu','menu.note':'Items may vary by availability. Prices shown only if publicly available.',
+      'menu.cat.all':'All','menu.cat.breakfast':'Breakfast','menu.cat.viennoiseries':'Viennoiseries','menu.cat.salads':'Salads','menu.cat.hot':'Hot dishes','menu.cat.drinks':'Drinks',
+      'menu.download':'Download Menu (PDF)',
+      'gallery.title':'Gallery',
+      'reviews.title':'Reviews',
+      'contact.title':'Find us'
+    }
+  };
+  function setLang(lang){
+    const dict = I18N[lang] || I18N.fr;
+    $$('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+    $('#lang-fr')?.setAttribute('aria-pressed', String(lang==='fr'));
+    $('#lang-en')?.setAttribute('aria-pressed', String(lang==='en'));
+    document.documentElement.lang = lang;
+    const countLabel = document.getElementById('menu-count-label');
+    if (countLabel) countLabel.textContent = (lang==='en' ? 'items' : 'éléments');
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  const savedLang = (()=>{ try{ return localStorage.getItem('lang'); }catch(e){ return null } })();
+  setLang(savedLang || 'fr');
+  $('#lang-fr')?.addEventListener('click', ()=>setLang('fr'));
+  $('#lang-en')?.addEventListener('click', ()=>setLang('en'));
+
+  // Menu rendering
+  const menuGrid = $('#menu-grid');
+  const chips = $$('.chip');
+  const catCards = $$('.cat-card');
+  let allMenuCards = [];
+  function renderMenu(items){
+    menuGrid.innerHTML = '';
+    items.forEach(item=>{
+      const card = document.createElement('article');
+      card.className = 'menu-card';
+      card.setAttribute('data-cat', item.category || 'Other');
+      card.innerHTML = `
+        <div>
+          <h3>${item.name}</h3>
+          ${item.desc ? `<p>${item.desc}</p>`: ''}
+          ${item.source ? `<p class="menu-source"><a target="_blank" rel="noopener" href="${item.source}">Source</a></p>`:''}
+        </div>
+        <div>${item.price ? `<span class="price">${item.price}</span>`: ''}</div>
+      `;
+      menuGrid.appendChild(card);
+    });
+  }
+  function filterMenu(cat){
+    if (cat==='all'){ renderMenu(allMenuCards); return; }
+    renderMenu(allMenuCards.filter(i=>i.category===cat));
+  }
+  chips.forEach(ch=>{
+    ch.addEventListener('click', ()=>{
+      chips.forEach(c=>c.classList.remove('is-active'));
+      ch.classList.add('is-active');
+      chips.forEach(c=>c.setAttribute('aria-selected','false'));
+      ch.setAttribute('aria-selected','true');
+      filterMenu(ch.getAttribute('data-filter'));
+    });
+  });
+  // Featured category tiles -> trigger corresponding chip
+  catCards.forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const f = card.getAttribute('data-filter');
+      const target = chips.find(c=>c.getAttribute('data-filter')===f);
+      if (target) target.click();
+    });
+  });
+
+  // Fetch and parse Eat.ma menu page images to show as visual menu entries
+  async function fetchEatMenu(){
+    const url = 'https://r.jina.ai/http://www.eat.ma/marrakech/monquotidien';
+    try{
+      const res = await fetch(url, {headers:{'Accept':'text/plain'}});
+      if (!res.ok) throw new Error('HTTP '+res.status);
+      const txt = await res.text();
+      const imgRe = /\(https:\/\/www\.eat\.ma\/wp-content\/uploads\/monquotidien-menu[^\)]+\.jpg\)/g; // (image.jpg)
+      const matches = txt.match(imgRe) || [];
+      const unique = Array.from(new Set(matches.map(m=>m.slice(1,-1))));
+      const items = unique.map((href,i)=>({
+        name: `Page de menu ${i+1}`,
+        desc: 'Scans du menu — Eat.ma',
+        category: 'Breakfast',
+        source: href
+      }));
+      return items;
+    }catch(e){
+      console.warn('Eat.ma fetch failed', e);
+      return [];
+    }
+  }
+
+  // Load menu: visual pages first. You can extend with TopMenu parsing when available.
+  (async function initMenu(){
+    const visual = await fetchEatMenu();
+    allMenuCards = visual; // Start with visual pages so there is no empty section
+    renderMenu(allMenuCards);
+  })();
+
+  // Print to PDF for menu only
+  $('#print-menu')?.addEventListener('click', ()=>window.print());
+
+  // Gallery from local images in ./img
+  const galleryEl = $('#gallery-grid');
+  const galleryImages = [
+    'img/gallery-1.jpeg','img/gallery-2.jpeg','img/gallery-3.jpeg','img/gallery-4.jpeg','img/gallery-5.jpeg','img/gallery-6.jpeg','img/gallery-7.jpeg','img/gallery-8.jpeg','img/traiteur-img1.jpg','img/traiteur-img2.jpg','img/dashbord.jpg'
+  ];
+  function buildGallery(){
+    galleryEl.innerHTML = '';
+    galleryImages.forEach((src,idx)=>{
+      const fig = document.createElement('figure');
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.src = src;
+      img.srcset = `${src} 1x`;
+      img.alt = `Monquotidien — ${idx+1}`;
+      fig.appendChild(img);
+      fig.addEventListener('click', ()=>openLightbox(idx));
+      galleryEl.appendChild(fig);
+    });
+  }
+  buildGallery();
+
+  // Lightbox
+  const lb = $('#lightbox'); const lbImg = $('#lightbox-img');
+  const lbClose = $('.lightbox-close'); const lbPrev = $('.lightbox-prev'); const lbNext = $('.lightbox-next');
+  let lbIndex = 0;
+  function openLightbox(i){ lbIndex = i; lb.setAttribute('aria-hidden','false'); lb.classList.add('open'); lbImg.src = galleryImages[lbIndex]; lbImg.alt = `Image ${lbIndex+1}`; }
+  function closeLightbox(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); }
+  function step(dir){ lbIndex = (lbIndex + dir + galleryImages.length) % galleryImages.length; lbImg.src = galleryImages[lbIndex]; }
+  lbClose?.addEventListener('click', closeLightbox);
+  lbPrev?.addEventListener('click', ()=>step(-1));
+  lbNext?.addEventListener('click', ()=>step(1));
+  lb?.addEventListener('click', e=>{ if (e.target===lb) closeLightbox(); });
+  window.addEventListener('keydown', e=>{ if (!lb.classList.contains('open')) return; if (e.key==='Escape') closeLightbox(); if (e.key==='ArrowLeft') step(-1); if (e.key==='ArrowRight') step(1); });
+
+  // Reviews slider (auto-advance)
+  const slider = $('#reviews-slider');
+  let slide = 0;
+  function nextReview(){
+    const n = $$('.review', slider).length;
+    slide = (slide+1) % n;
+    slider.scrollTo({left: slider.clientWidth * slide, behavior: 'smooth'});
+  }
+  setInterval(nextReview, 5000);
+  
+  // --- Enhanced Menu UX (search, counts, image-forward cards) ---
+  const searchInput = $('#menu-search');
+  const countEl = $('#menu-count');
+  let currentFilter = 'all';
+  function cardTemplate(item){
+    const img = item.image || item.source || '';
+    return `
+      <div class="media">${img ? `<img src="${img}" alt="${item.name}" loading="lazy" decoding="async">` : ''}</div>
+      <div class="body">
+        <div>
+          <div class="badge">${item.category || 'Menu'}</div>
+          <h3>${item.name}</h3>
+          ${item.desc ? `<p>${item.desc}</p>`: ''}
+          ${item.source ? `<p class="menu-source"><a target="_blank" rel="noopener" href="${item.source}">Voir la page</a></p>`:''}
+        </div>
+        <div>${item.price ? `<span class="price">${item.price}</span>`: ''}</div>
+      </div>`;
+  }
+  // Override previous render/filter with richer UI
+  renderMenu = function(items){
+    const grid = document.getElementById('menu-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    items.forEach(item=>{
+      const card = document.createElement('article');
+      card.className = 'menu-card';
+      card.setAttribute('data-cat', item.category || 'Other');
+      card.innerHTML = cardTemplate(item);
+      grid.appendChild(card);
+    });
+    if (countEl) countEl.textContent = String(items.length);
+  }
+  function applyFilters(){
+    const q = (searchInput?.value || '').trim().toLowerCase();
+    let items = allMenuCards;
+    if (currentFilter !== 'all') items = items.filter(i=> (i.category||'') === currentFilter);
+    if (q) items = items.filter(i=> (i.name||'').toLowerCase().includes(q) || (i.desc||'').toLowerCase().includes(q) || (i.category||'').toLowerCase().includes(q));
+    renderMenu(items);
+  }
+  filterMenu = function(cat){ currentFilter = cat; applyFilters(); }
+  searchInput?.addEventListener('input', applyFilters);
+  // Normalize ingested visual pages to look like menu items once loaded
+  setTimeout(()=>{ try{
+    allMenuCards = (allMenuCards||[]).map(o=>({ ...o, category: o.category || 'Menu', image: o.image || o.source }));
+    applyFilters();
+  }catch(e){} }, 1200);
+
+  // Back to top
+  $('#to-top')?.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+
+

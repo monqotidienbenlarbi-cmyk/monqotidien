@@ -1,0 +1,11 @@
+{
+  "categories": [
+    { "name": "Breakfast", "items": [] },
+    { "name": "Viennoiseries", "items": [] },
+    { "name": "Pâtisserie", "items": [] },
+    { "name": "Sandwiches", "items": [] },
+    { "name": "Salads", "items": [] },
+    { "name": "Hot dishes", "items": [] },
+    { "name": "Drinks", "items": [] }
+  ]
+}

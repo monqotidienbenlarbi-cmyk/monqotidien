@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monquotidien Massira — Café, Boulangerie & Restaurant à Marrakech</title>
+    <meta name="description" content="Monquotidien Massira à Marrakech — Café, Boulangerie, Pâtisserie et Restaurant. Produits sains, frais et accessibles. Petit-déjeuner, déjeuner, dîner." />
+    <meta name="theme-color" content="#f6efe7" />
+    <meta property="og:title" content="Monquotidien Massira — Café, Boulangerie & Restaurant à Marrakech" />
+    <meta property="og:description" content="Sain, frais, accessible et diversifié. Petit-déjeuner, déjeuner, dîner. Boulangerie & Pâtisserie artisanales." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="../img/dashbord.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="../logo.png" sizes="32x32" />
+    <noscript><style>body{opacity:1!important}</style></noscript>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#hero"><img src="../logo.png" alt="Monquotidien — logo" width="40" height="40" />Monquotidien Massira</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">☰</button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#reviews">Avis</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="lang-switch"><button id="lang-fr" aria-pressed="true">FR</button><button id="lang-en" aria-pressed="false">EN</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="hero" class="hero">
+        <div class="hero-inner">
+          <h1>Monquotidien Massira — Café • Boulangerie • Restaurant</h1>
+          <p id="hero-sub">frais • diversifié • accessible</p>
+          <div class="cta-group">
+            <a class="btn btn-primary" href="#menu">Voir le menu</a>
+            <a class="btn btn-outline" href="tel:+212524341461">Appeler</a>
+            <a class="btn btn-accent" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533">Itinéraire</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section container">
+        <h2>À propos</h2>
+        <div class="about-grid">
+          <p>Bienvenue à Monquotidien Massira à Marrakech. Café de quartier, boulangerie et pâtisserie artisanales, nous proposons également des petits-déjeuners et une cuisine conviviale toute la journée.</p>
+          <p>Dans l’esprit de la marque — sain, frais, accessible et diversifié — nos produits sont préparés avec soin et servis dans une ambiance chaleureuse.</p>
+          <p>Du croissant du matin aux plats chauds du midi et aux desserts gourmands, il y a toujours quelque chose de bon.</p>
+        </div>
+        <div class="hours">
+          <strong>Horaires</strong>
+          <p>Vérifier les horaires par téléphone.</p>
+          <a class="btn btn-outline" href="tel:+212524341461">+212 5 24 34 14 61</a>
+        </div>
+      </section>
+
+      <section id="menu" class="section container">
+        <div class="menu-header">
+          <h2>Menu</h2>
+          <p class="menu-note">Items susceptibles de varier. Prix affichés uniquement s’ils sont publics.</p>
+        </div>
+        <div class="menu-controls" role="tablist">
+          <button class="chip is-active" data-filter="all" aria-selected="true">Tout</button>
+          <button class="chip" data-filter="Breakfast">Petit-déjeuner</button>
+          <button class="chip" data-filter="Viennoiseries">Viennoiseries</button>
+          <button class="chip" data-filter="Pâtisserie">Pâtisserie</button>
+          <button class="chip" data-filter="Sandwiches">Sandwiches</button>
+          <button class="chip" data-filter="Salads">Salades</button>
+          <button class="chip" data-filter="Hot dishes">Plats chauds</button>
+          <button class="chip" data-filter="Drinks">Boissons</button>
+        </div>
+        <div class="menu-tools">
+          <input id="menu-search" class="search-input" type="search" placeholder="Rechercher un plat, une catégorie…" />
+          <span class="menu-count"><span id="menu-count">0</span> éléments</span>
+        </div>
+        <div id="menu-grid" class="menu-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="gallery" class="section container">
+        <h2>Galerie</h2>
+        <div id="gallery-grid" class="gallery-grid"></div>
+        <div id="lightbox" class="lightbox" aria-hidden="true">
+          <button class="lightbox-close" aria-label="Fermer">×</button>
+          <img id="lightbox-img" alt="" />
+        </div>
+      </section>
+
+      <section id="reviews" class="section container">
+        <h2>Avis</h2>
+        <div class="reviews-slider" id="reviews-slider">
+          <div class="review"><blockquote>Excellent petit-déjeuner et pâtisseries fraîches.</blockquote><cite>— Tripadvisor</cite></div>
+          <div class="review"><blockquote>Super endroit pour un café et un déjeuner rapide.</blockquote><cite>— Tripadvisor</cite></div>
+          <div class="review"><blockquote>Variété de plats, ambiance agréable.</blockquote><cite>— Tripadvisor</cite></div>
+        </div>
+      </section>
+
+      <section id="contact" class="section container">
+        <h2>Nous trouver</h2>
+        <address class="contact-card">
+          <p><strong>Monquotidien Massira</strong></p>
+          <p>Doha forum 1 lot numéro 1, Magasin N°1, en face du complexe sportif Zerktouni, Marrakech</p>
+          <p><a href="tel:+212524341461">+212 5 24 34 14 61</a></p>
+        </address>
+        <div class="map-wrap">
+          <iframe title="Carte Monquotidien Massira" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8031.329354801693!2d-8.051127273493462!3d31.629471675764783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafe9d4d3a5f18d%3A0xafa40c288faefc41!2sMonquotidien%20massira!5e0!3m2!1sfr!2sma!4v1758408146631!5m2!1sfr!2sma"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>Monquotidien Massira</strong>
+          <p>Café • Boulangerie • Pâtisserie • Restaurant — Marrakech</p>
+        </div>
+        <nav>
+          <a href="#about">À propos</a>
+          <a href="#menu">Menu</a>
+          <a href="#gallery">Galerie</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div>
+          <p>Guéliz: <a href="tel:+212524420088">+212 5 24 42 00 88</a></p>
+          <p>Targa: <a href="tel:+212524346561">+212 5 24 34 65 61</a></p>
+          <p>Massira: <a href="tel:+212524341461">+212 5 24 34 14 61</a></p>
+        </div>
+      </div>
+      <div class="container copyright"><small>© <span id="year"></span> Monquotidien Massira</small></div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Monquotidien Massira",
+      "image": "../img/dashbord.jpg",
+      "telephone": "+212524341461",
+      "address": {"@type":"PostalAddress","streetAddress":"Doha forum 1 lot numéro 1, Magasin N°1, en face du complexe sportif Zerktouni","addressLocality":"Marrakech","addressCountry":"MA"},
+      "geo": {"@type":"GeoCoordinates","latitude":31.6280687,"longitude":-8.0537533},
+      "servesCuisine": ["Italian","French","Moroccan","International","Mediterranean","Bakery","Pastry","Breakfast","Lunch","Dinner"]
+    }
+    </script>
+    <script src="app.js" defer></script>
+  </body>
+  </html>
