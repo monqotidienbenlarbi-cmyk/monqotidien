@@ -1,347 +1,222 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Monquotidien Massira — Café, Boulangerie & Restaurant à Marrakech</title>
-    <meta name="description" content="Monquotidien Massira à Marrakech — Café, Boulangerie, Pâtisserie et Restaurant. Produits sains, frais et accessibles. Petit-déjeuner, déjeuner, dîner, bakery & coffee. Appelez +212 5 24 34 14 61 ou obtenez l’itinéraire." />
-    <meta name="theme-color" content="#f6efe7" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MonQuotidien Rent Car — Location de voitures à Marrakech</title>
+  <meta name="description" content="MonQuotidien Rent Car à Marrakech — location de voitures simple et rapide. Flotte récente, tarifs clairs, livraison aéroport/ville. Réservez par WhatsApp ou email." />
+  <meta name="theme-color" content="#0A192F" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Monquotidien Massira — Café, Boulangerie & Restaurant à Marrakech" />
-    <meta property="og:description" content="Sain, frais, accessible et diversifié. Petit-déjeuner, déjeuner, dîner. Boulangerie & Pâtisserie artisanales." />
-    <meta property="og:type" content="website" />
-    <!-- <meta property="og:url" content=""> removed per request -->
-    <meta property="og:image" content="img/dashbord.jpg" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="MonQuotidien Rent Car — Location de voitures à Marrakech" />
+  <meta property="og:description" content="Flotte récente, tarifs clairs, livraison aéroport/ville. Réservation simple par WhatsApp ou email." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/hero-car.jpg" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Monquotidien Massira — Café, Boulangerie & Restaurant à Marrakech" />
-    <meta name="twitter:description" content="Sain, frais, accessible, diversifié. Café, Boulangerie, Pâtisserie, Restaurant à Marrakech." />
-    <meta name="twitter:image" content="img/dashbord.jpg" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MonQuotidien Rent Car — Location de voitures à Marrakech" />
+  <meta name="twitter:description" content="Flotte récente, tarifs clairs, livraison aéroport/ville." />
+  <meta name="twitter:image" content="img/hero-car.jpg" />
 
-    <link rel="preload" href="styles.css" as="style" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/png" href="logo.png" sizes="32x32" />
-    <link rel="alternate" hreflang="fr" href="#" />
-    <link rel="alternate" hreflang="en" href="#" />
-      <noscript><style>body{opacity:1!important}</style></noscript>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Aller au contenu</a>
+  <!-- CSS/JS (use your existing files if present) -->
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="logo.png" sizes="32x32" />
+  <link rel="alternate" hreflang="fr" href="#" />
+  <link rel="alternate" hreflang="en" href="#" />
+  <noscript><style>body{opacity:1!important}</style></noscript>
 
-    <header class="site-header" role="banner">
-      <nav class="nav" aria-label="Navigation principale">
-        <a class="brand" href="#hero" aria-label="Accueil Monquotidien Massira">
-          <img src="logo.png" alt="Monquotidien Massira — logo" width="40" height="40" loading="eager" />
-          <span>Monquotidien Massira</span>
-        </a>
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
-          <span class="sr-only">Menu</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-        <ul id="nav-menu" class="nav-menu">
-          <li><a href="#about" data-i18n="nav.about">À propos</a></li>
-          <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
-          <li><a href="#gallery" data-i18n="nav.gallery">Galerie</a></li>
-          <li><a href="#reviews" data-i18n="nav.reviews">Avis</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-          <li class="lang-switch">
-            <button id="lang-fr" aria-pressed="true">FR</button>
-            <button id="lang-en" aria-pressed="false">EN</button>
-          </li>
-        </ul>
+  <style>
+    /* Minimal in-page tweaks so it looks good even without your CSS */
+    :root{--bg:#0A192F;--ink:#EAF2FF;--muted:#9FB0CC;--accent:#00BFA6}
+    body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;margin:0}
+    .site-header,.site-footer{background:#0F203F;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center;color:var(--ink);text-decoration:none;font-weight:600}
+    .nav-menu{display:flex;gap:14px;align-items:center;list-style:none;margin:0;padding:0}
+    .nav-menu a{color:var(--ink);opacity:.9;text-decoration:none}
+    .nav-menu a:hover{color:var(--accent)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);text-decoration:none;color:var(--ink)}
+    .btn-primary{background:var(--accent);border-color:transparent;color:#03211d;font-weight:700}
+    .btn-outline{background:transparent}
+    .btn-accent{background:linear-gradient(90deg,#00BFA6,#40E0D0);color:#03211d;font-weight:700;border:none}
+    .hero{background:radial-gradient(1000px 500px at 5% -10%, rgba(64,224,208,.12), transparent 60%), url('img/hero-car.jpg') center/cover no-repeat;min-height:58vh;display:grid;place-items:center;text-align:center}
+    .hero-inner{backdrop-filter:saturate(140%) blur(2px);background:rgba(10,25,47,.55);padding:28px;border-radius:18px;border:1px solid rgba(255,255,255,.1);max-width:850px;margin:40px 16px}
+    .hero h1{margin:0 0 8px;font-size:32px;background:linear-gradient(90deg,#00BFA6,#40E0D0);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{margin:0 0 14px;color:var(--muted)}
+    .cta-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .section{max-width:1100px;margin:0 auto;padding:36px 16px}
+    .grid{display:grid;gap:18px}
+    .fleet{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:#0F203F;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .card img{width:100%;height:160px;object-fit:cover}
+    .card .p{padding:14px}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .kpi{background:#0F203F;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px}
+    .faq details{background:#0F203F;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 14px}
+    .footer-grid{display:grid;gap:18px;grid-template-columns:2fr 1fr 1fr;max-width:1100px;margin:0 auto;padding:20px 16px}
+    .copyright{border-top:1px solid rgba(255,255,255,.08);text-align:center;color:var(--muted);padding:10px 0}
+    .muted{color:var(--muted)}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(0,191,166,.15);border:1px solid rgba(0,191,166,.35);color:#8DF7EA;font-size:.84rem}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="brand" href="#hero" aria-label="Accueil MonQuotidien Rent Car">
+        <img src="logo.png" alt="MonQuotidien Rent Car — logo" width="40" height="40" loading="eager" />
+        <span>MonQuotidien Rent Car</span>
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#fleet">Flotte</a></li>
+        <li><a href="#rates">Tarifs</a></li>
+        <li><a href="#how">Comment ça marche</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="privacy-policy.html" rel="noopener">Confidentialité</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="hero" class="hero" aria-label="Accueil">
+      <div class="hero-inner">
+        <span class="badge">Marrakech & Aéroport RAK</span>
+        <h1>Location de voitures simple, rapide et transparente</h1>
+        <p>Flotte récente • Livraison aéroport/ville • Assistance 24/7 • Paiement sur place</p>
+        <div class="cta-group">
+          <a class="btn btn-primary" href="#fleet">Voir les véhicules</a>
+          <a class="btn btn-accent" target="_blank" rel="noopener" href="https://wa.me/212646184451?text=Bonjour%20MonQuotidien%20Rent%20Car%2C%20je%20souhaite%20r%C3%A9server.">WhatsApp</a>
+          <a class="btn btn-outline" href="mailto:rent@monquotidien.ink?subject=Demande%20de%20r%C3%A9servation">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fleet -->
+    <section id="fleet" class="section" aria-labelledby="fleet-title">
+      <h2 id="fleet-title">Notre flotte</h2>
+      <p class="muted">Exemples indicatifs. Modèles selon disponibilité. Kilométrage journalier souple, extensions possibles.</p>
+      <div class="grid fleet">
+        <article class="card">
+          <img src="img/fleet-economy.jpg" alt="Citadine économique" />
+          <div class="p">
+            <h3>Citadine Éco (ex: Clio / i10)</h3>
+            <p>AC • 5 portes • Boîte manuelle</p>
+            <p><strong>À partir de 190 DH/jour</strong></p>
+            <a class="btn btn-outline" href="https://wa.me/212646184451?text=Je%20veux%20r%C3%A9server%20une%20citadine%20%C3%A9co">Réserver</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/fleet-compact.jpg" alt="Compacte" />
+          <div class="p">
+            <h3>Compacte (ex: 308 / Golf)</h3>
+            <p>AC • 5 portes • Manuelle/Auto</p>
+            <p><strong>À partir de 290 DH/jour</strong></p>
+            <a class="btn btn-outline" href="https://wa.me/212646184451?text=Je%20veux%20r%C3%A9server%20une%20compacte">Réserver</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/fleet-suv.jpg" alt="SUV" />
+          <div class="p">
+            <h3>SUV (ex: Duster / Tucson)</h3>
+            <p>AC • Confort • Route & ville</p>
+            <p><strong>À partir de 490 DH/jour</strong></p>
+            <a class="btn btn-outline" href="https://wa.me/212646184451?text=Je%20veux%20r%C3%A9server%20un%20SUV">Réserver</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/fleet-luxe.jpg" alt="Berline premium" />
+          <div class="p">
+            <h3>Premium (ex: Série 3 / C-Class)</h3>
+            <p>Auto • Confort avancé</p>
+            <p><strong>Sur devis</strong></p>
+            <a class="btn btn-outline" href="https://wa.me/212646184451?text=Je%20veux%20un%20devis%20premium">Demander un devis</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Rates / KPIs -->
+    <section id="rates" class="section" aria-labelledby="rates-title">
+      <h2 id="rates-title">Tarifs & conditions</h2>
+      <div class="kpis">
+        <div class="kpi"><strong>Dépôt & Assurance</strong><p class="muted">Dépôt raisonnable, assurance de base incluse. Options rachat de franchise sur demande.</p></div>
+        <div class="kpi"><strong>Âge & Permis</strong><p class="muted">Âge min. 21 ans, permis ≥ 1 an (photo/scan requis).</p></div>
+        <div class="kpi"><strong>Livraison</strong><p class="muted">Aéroport RAK, centre-ville et hôtels — possible 7j/7.</p></div>
+        <div class="kpi"><strong>Paiement</strong><p class="muted">Espèces/carte sur place. Pas de paiement dans l’app.</p></div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="section" aria-labelledby="how-title">
+      <h2 id="how-title">Comment ça marche</h2>
+      <ol>
+        <li>Choisissez un véhicule et envoyez un message <strong>WhatsApp</strong> ou <strong>Email</strong>.</li>
+        <li>Recevez confirmation, conditions et point de rencontre.</li>
+        <li>Signature du contrat & remise des clés. Bon voyage !</li>
+      </ol>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact & localisation</h2>
+      <p><strong>MonQuotidien Rent Car</strong> — Marrakech, Maroc</p>
+      <p>Tél/WhatsApp: <a class="btn btn-outline" href="https://wa.me/212646184451" target="_blank" rel="noopener">+212 646 184 451</a></p>
+      <p>Email: <a href="mailto:rent@monquotidien.ink">rent@monquotidien.ink</a> (CC: <a href="mailto:support@monquotidien.ink">support@monquotidien.ink</a>)</p>
+      <p><a class="btn btn-accent" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533">Itinéraire Google Maps</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div>
+        <strong>MonQuotidien Rent Car</strong>
+        <p class="muted">Flotte récente • Livraison aéroport/ville • Assistance 24/7</p>
+      </div>
+      <nav aria-label="Liens">
+        <p><a href="#fleet">Flotte</a></p>
+        <p><a href="#rates">Tarifs</a></p>
+        <p><a href="#how">Comment ça marche</a></p>
+        <p><a href="#contact">Contact</a></p>
+        <p><a href="privacy-policy.html">Politique de confidentialité</a></p>
       </nav>
-    </header>
-
-    <main id="main">
-      <!-- Hero -->
-      <section id="hero" class="hero reveal" aria-label="Accueil" data-animate>
-        <div class="hero-inner">
-          <h1>Monquotidien Massira — Café • Boulangerie • Restaurant</h1>
-          <p data-i18n="hero.sub">frais • diversifié • accessible</p>
-          <div class="cta-group">
-            <a class="btn btn-primary" href="#menu" data-i18n="cta.viewMenu">Voir le menu</a>
-            <a class="btn btn-outline" href="tel:+212524341461" data-i18n="cta.call">Appeler</a>
-            <a class="btn btn-accent" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533" data-i18n="cta.directions">Itinéraire</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section container reveal" aria-labelledby="about-title" data-animate>
-        <h2 id="about-title" data-i18n="about.title">À propos</h2>
-        <div class="about-intro stagger">
-          <p data-i18n="about.lead1">Bienvenue à Monquotidien, votre destination culinaire préférée au cœur de Marrakech. Notre restaurant est né d’une passion pour la cuisine de qualité et d’un amour pour la communauté locale.</p>
-          <p data-i18n="about.lead2">Chez Monquotidien, nous croyons que chaque repas est une occasion de créer des souvenirs inoubliables. C’est pourquoi nous nous engageons à utiliser les meilleurs ingrédients pour préparer nos plats. Nos chefs talentueux apportent une touche de créativité à chaque plat, garantissant une expérience culinaire unique à chaque visite.</p>
-          <p data-i18n="about.lead3">Notre menu est un mélange de saveurs traditionnelles et modernes, reflétant la richesse et la diversité de la cuisine marocaine. Que vous soyez à la recherche d’un déjeuner décontracté, d’un dîner romantique ou d’une célébration spéciale, Monquotidien est l’endroit idéal pour savourer des moments délicieux.</p>
-          <p data-i18n="about.lead4">Nous sommes impatients de vous accueillir chez Monquotidien. Venez vivre une expérience culinaire exceptionnelle !</p>
-        </div>
-        <div class="about-grid stagger">
-          <p data-i18n="about.p1">Bienvenue chez Monquotidien Massira à Marrakech. Café de quartier, boulangerie et pâtisserie artisanales, nous proposons également des petits-déjeuners et une cuisine conviviale tout au long de la journée.</p>
-          <p data-i18n="about.p2">Dans l’esprit de la marque Mon Quotidien — sain, frais, accessible et diversifié — nos produits sont préparés avec soin et servis dans une ambiance chaleureuse.</p>
-          <p data-i18n="about.p3">Du croissant du matin aux plats chauds pour le déjeuner, en passant par les desserts gourmands, il y a toujours quelque chose de bon pour chaque moment.</p>
-        </div>
-        <div class="hours">
-          <strong data-i18n="about.hours.title">Horaires</strong>
-          <p data-i18n="about.hours.note">Vérifier les horaires par téléphone.</p>
-          <a class="btn btn-outline" href="tel:+212524341461" aria-label="Appeler Monquotidien Massira">+212 5 24 34 14 61</a>
-        </div>
-      </section>
-
-      <!-- Menu -->
-      <section id="menu" class="section container reveal" aria-labelledby="menu-title" data-animate>
-        <div class="menu-header">
-          <h2 id="menu-title" data-i18n="menu.title">Menu</h2>
-          <p class="menu-note" data-i18n="menu.note">Certaines références peuvent varier selon disponibilité. Prix affichés uniquement si disponibles publiquement.</p>
-        </div>
-        <div class="menu-controls sticky" role="tablist" aria-label="Catégories du menu">
-          <span class="chip-indicator" id="chip-indicator" aria-hidden="true"></span>
-          <button class="chip is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="menu.cat.all">Tout</button>
-          <button class="chip" data-filter="Breakfast" role="tab" aria-selected="false" data-i18n="menu.cat.breakfast">Petit-déjeuner</button>
-          <button class="chip" data-filter="Viennoiseries" role="tab" aria-selected="false" data-i18n="menu.cat.viennoiseries">Viennoiseries</button>
-          <button class="chip" data-filter="Pâtisserie" role="tab" aria-selected="false" data-i18n="menu.cat.patisserie">Pâtisserie</button>
-          <button class="chip" data-filter="Sandwiches" role="tab" aria-selected="false" data-i18n="menu.cat.sandwiches">Sandwiches</button>
-          <button class="chip" data-filter="Salads" role="tab" aria-selected="false" data-i18n="menu.cat.salads">Salades</button>
-          <button class="chip" data-filter="Hot dishes" role="tab" aria-selected="false" data-i18n="menu.cat.hot">Plats chauds</button>
-          <button class="chip" data-filter="Drinks" role="tab" aria-selected="false" data-i18n="menu.cat.drinks">Boissons</button>
-        </div>
-        <div class="menu-view-toggle" aria-label="Affichage du menu">
-          <button id="view-pro" class="toggle-btn" aria-pressed="false" data-i18n="menu.view.pro">Vue Pro</button>
-          <button id="view-scans" class="toggle-btn is-active" aria-pressed="true" data-i18n="menu.view.visual">Vue Visuelle</button>
-        </div>
-        <div class="menu-tools">
-          <label class="search" for="menu-search">
-            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path d="M10 2a8 8 0 015.292 13.708l4 4-1.414 1.414-4-4A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z" fill="currentColor"/></svg>
-            <input id="menu-search" type="search" placeholder="Rechercher un plat, une catégorie…" aria-label="Rechercher dans le menu" />
-          </label>
-          <span class="menu-count"><span id="menu-count">0</span> <span id="menu-count-label" data-i18n="menu.count">éléments</span></span>
-        </div>
-        <div class="menu-featured" aria-label="Catégories en vedette">
-          <button class="cat-card" data-filter="Breakfast">
-            <img src="img/gallery-2.jpeg" alt="Petit-déjeuner" loading="lazy" />
-            <span data-i18n="menu.cat.breakfast">Petit-déjeuner</span>
-          </button>
-          <button class="cat-card" data-filter="Viennoiseries">
-            <img src="img/gallery-3.jpeg" alt="Viennoiseries" loading="lazy" />
-            <span data-i18n="menu.cat.viennoiseries">Viennoiseries</span>
-          </button>
-          <button class="cat-card" data-filter="Pâtisserie">
-            <img src="img/gallery-4.jpeg" alt="Pâtisserie" loading="lazy" />
-            <span data-i18n="menu.cat.patisserie">Pâtisserie</span>
-          </button>
-          <button class="cat-card" data-filter="Sandwiches">
-            <img src="img/gallery-5.jpeg" alt="Sandwiches" loading="lazy" />
-            <span data-i18n="menu.cat.sandwiches">Sandwiches</span>
-          </button>
-          <button class="cat-card" data-filter="Salads">
-            <img src="img/gallery-6.jpeg" alt="Salades" loading="lazy" />
-            <span data-i18n="menu.cat.salads">Salades</span>
-          </button>
-          <button class="cat-card" data-filter="Hot dishes">
-            <img src="img/gallery-7.jpeg" alt="Plats chauds" loading="lazy" />
-            <span data-i18n="menu.cat.hot">Plats chauds</span>
-          </button>
-          <button class="cat-card" data-filter="Drinks">
-            <img src="img/gallery-8.jpeg" alt="Boissons" loading="lazy" />
-            <span data-i18n="menu.cat.drinks">Boissons</span>
-          </button>
-        </div>
-        <div id="menu-pro" class="menu-pro" hidden aria-live="polite">
-          <div class="menu-layout">
-            <nav class="menu-sidebar" aria-label="Catégories du menu (pro)" id="menu-sidebar"></nav>
-            <div class="menu-content" id="menu-content"></div>
-          </div>
-          <small class="menu-source">Version structurée affichée si des données publiques sont disponibles.</small>
-        </div>
-        <div id="menu-grid" class="menu-grid" aria-live="polite"></div>
-        <div class="menu-actions">
-          
-          <small class="menu-source">Sources: Eat.ma, TopMenu</small>
-        </div>
-      </section>
-
-      <!-- Gallery -->
-      <section id="gallery" class="section container reveal" aria-labelledby="gallery-title" data-animate>
-        <h2 id="gallery-title" data-i18n="gallery.title">Galerie</h2>
-        <div class="gallery-grid stagger" id="gallery-grid">
-          <!-- Images injected by JS from ./img -->
-        </div>
-        <p class="gallery-credit">Instagram: <a href="https://www.instagram.com/monquotidien.ma/" target="_blank" rel="noopener">@monquotidien.ma</a></p>
-        <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Visionneuse">
-          <button class="lightbox-close" aria-label="Fermer">×</button>
-          <img id="lightbox-img" alt="" />
-          <button class="lightbox-prev" aria-label="Précédent">‹</button>
-          <button class="lightbox-next" aria-label="Suivant">›</button>
-        </div>
-      </section>
-
-      <!-- Reviews -->
-      <section id="reviews" class="section container reveal" aria-labelledby="reviews-title" data-animate>
-        <h2 id="reviews-title" data-i18n="reviews.title">Avis</h2>
-        <div class="reviews-slider" id="reviews-slider" aria-live="polite">
-          <div class="review" tabindex="0">
-            <blockquote>Excellent petit-déjeuner et pâtisseries fraîches. Service attentionné.</blockquote>
-            <cite>— Tripadvisor</cite>
-          </div>
-          <div class="review" tabindex="0">
-            <blockquote>Super endroit pour un café et un déjeuner rapide.</blockquote>
-            <cite>— Tripadvisor</cite>
-          </div>
-          <div class="review" tabindex="0">
-            <blockquote>Variété de plats, ambiance agréable. Je recommande.</blockquote>
-            <cite>— Tripadvisor</cite>
-          </div>
-        </div>
-        <div class="reviews-progress" aria-hidden="true"><div class="bar" id="reviews-bar"></div></div>
-        <div class="reviews-actions">
-          <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.tripadvisor.com/">Lire plus sur Tripadvisor</a>
-        </div>
-      </section>
-
-      <!-- Contact / Location -->
-      <section id="contact" class="section container reveal" aria-labelledby="contact-title" data-animate>
-        <h2 id="contact-title" data-i18n="contact.title">Nous trouver</h2>
-        <div class="locations" aria-label="Nos adresses">
-          <h3 data-i18n="locations.title">Nos adresses</h3>
-          <div class="locations-grid">
-            <article class="location-card">
-              <h4>Monquotidien Guéliz</h4>
-              <p>41-43 Rue Yougoslavie, Marrakech 40000</p>
-              <p>
-                <strong data-i18n="locations.hours">Heures d’ouverture</strong>
-                <span class="verify" data-i18n="locations.verify">(à vérifier par téléphone)</span><br />
-                <span data-i18n="locations.range.fr">Lundi–Dimanche: 07:00–23:00</span>
-              </p>
-              <div class="contact-actions">
-                <a class="btn btn-primary" href="tel:+212524420088" data-i18n="cta.call">Appeler</a>
-                <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=41-43%20Rue%20Yougoslavie%2C%20Marrakech%2040000" data-i18n="cta.directions">Itinéraire</a>
-              </div>
-            </article>
-            <article class="location-card">
-              <h4>Monquotidien Targa</h4>
-              <p>Lalla Haya, 82 Rte de Targa, Marrakech 40130</p>
-              <p>
-                <strong data-i18n="locations.hours">Heures d’ouverture</strong>
-                <span class="verify" data-i18n="locations.verify">(à vérifier par téléphone)</span><br />
-                <span data-i18n="locations.range.fr">Lundi–Dimanche: 07:00–23:00</span>
-              </p>
-              <div class="contact-actions">
-                <a class="btn btn-primary" href="tel:+212524346561" data-i18n="cta.call">Appeler</a>
-                <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Lalla%20Haya%2C%2082%20Rte%20de%20Targa%2C%20Marrakech%2040130" data-i18n="cta.directions">Itinéraire</a>
-              </div>
-            </article>
-            <article class="location-card">
-              <h4>Monquotidien Massira</h4>
-              <p>Doha forum 1 lot numéro 1</p>
-              <p>
-                <strong data-i18n="locations.hours">Heures d’ouverture</strong>
-                <span class="verify" data-i18n="locations.verify">(à vérifier par téléphone)</span><br />
-                <span data-i18n="locations.range.fr">Lundi–Dimanche: 07:00–23:00</span>
-              </p>
-              <div class="contact-actions">
-                <a class="btn btn-primary" href="tel:+212524341461" data-i18n="cta.call">Appeler</a>
-                <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533" data-i18n="cta.directions">Itinéraire</a>
-              </div>
-            </article>
-          </div>
-        </div>
-        <address class="contact-card">
-          <p><strong>Monquotidien Massira</strong></p>
-          <p>Doha forum 1 lot numéro 1, Magasin N°1,<br /> en face du complexe sportif Zerktouni, Marrakech</p>
-          <p><a href="tel:+212524341461">+212 5 24 34 14 61</a></p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="tel:+212524341461" data-i18n="cta.call">Appeler</a>
-            <a class="btn btn-accent" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533" data-i18n="cta.directions">Itinéraire</a>
-          </div>
-          <div class="social">
-            <a class="icon" target="_blank" rel="noopener" aria-label="Instagram @monquotidien.ma" href="https://www.instagram.com/monquotidien.ma/">
-              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zM18 6.3a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z" fill="currentColor"/></svg>
-            </a>
-          </div>
-        </address>
-        <div class="map-wrap">
-          <iframe title="Carte Monquotidien Massira" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8031.329354801693!2d-8.051127273493462!3d31.629471675764783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafe9d4d3a5f18d%3A0xafa40c288faefc41!2sMonquotidien%20massira!5e0!3m2!1sfr!2sma!4v1758408146631!5m2!1sfr!2sma"></iframe>
-          <a class="btn btn-outline map-cta" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533" data-i18n="cta.directions">Obtenir l’itinéraire</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer" role="contentinfo">
-  <div class="container footer-grid enhanced">
-    <div class="f-brand">
-      <strong>Monquotidien Massira</strong>
-      <p>Sain • Frais • Accessible • Diversifié — Café, Boulangerie, Pâtisserie, Restaurant à Marrakech.</p>
-      <div class="f-social">
-        <a class="icon" target="_blank" rel="noopener" aria-label="Instagram @monquotidien.ma" href="https://www.instagram.com/monquotidien.ma/">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zM18 6.3a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z" fill="currentColor"/></svg>
-        </a>
+      <div>
+        <p>WhatsApp: <a href="https://wa.me/212646184451" target="_blank" rel="noopener">+212 646 184 451</a></p>
+        <p>Email: <a href="mailto:rent@monquotidien.ink">rent@monquotidien.ink</a></p>
       </div>
     </div>
-    <nav class="f-links" aria-label="Liens rapides">
-          <a href="#about" data-i18n="nav.about">À propos</a>
-          <a href="#menu" data-i18n="nav.menu">Menu</a>
-          <a href="#gallery" data-i18n="nav.gallery">Galerie</a>
-          <a href="#contact" data-i18n="nav.contact">Contact</a>
-          <a href="#reviews" data-i18n="nav.reviews">Avis</a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=31.6280687,-8.0537533" target="_blank" rel="noopener" data-i18n="footer.directions">Itinéraire</a>
-          <a href="https://www.instagram.com/monquotidien.ma/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
-        </nav>
-    <div class="f-contacts">
-      <p class="muted">Nous appeler</p>
-      <p>Guéliz: <a href="tel:+212524420088">+212 5 24 42 00 88</a></p>
-      <p>Targa: <a href="tel:+212524346561">+212 5 24 34 65 61</a></p>
-      <p>Massira: <a href="tel:+212524341461">+212 5 24 34 14 61</a></p>
+    <div class="copyright">
+      <small>© <span id="year"></span> MonQuotidien Rent Car. Tous droits réservés.</small>
     </div>
-  </div>
-  <div class="container copyright">
-    <small>© <span id="year"></span> Monquotidien Massira. Tous droits réservés.</small>
-  </div>
-  <div class="cookie" id="cookie">
-    <p>Nous utilisons des cookies pour améliorer votre expérience. <button id="cookie-accept" class="btn btn-small">OK</button></p>
-  </div>
-  <div class="container footer-divider"><small>© <span id="year"></span> Monquotidien Massira</small><button id="to-top-footer" class="btn btn-small btn-secondary" aria-label="Haut de page">↑</button></div>
-    </footer>
+  </footer>
 
-    <!-- Floating actions (mobile) -->
-    <div class="fab-bar" aria-label="Actions rapides">
-      <a class="btn btn-accent" href="tel:+212524341461" aria-label="Appeler">Appeler</a>
-      <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=31.6280687%2C-8.0537533" aria-label="Itinéraire">Itinéraire</a>
-      <button id="to-top" class="btn btn-secondary" aria-label="Haut de page">↑</button>
-    </div>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CarRental",
+    "name": "MonQuotidien Rent Car",
+    "image": "img/hero-car.jpg",
+    "telephone": "+212646184451",
+    "email": "rent@monquotidien.ink",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Marrakech",
+      "addressCountry": "MA"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 31.6280687, "longitude": -8.0537533 },
+    "areaServed": "Marrakech",
+    "url": "https://<votre-domaine-ou-github-pages>"
+  }
+  </script>
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Monquotidien Massira",
-      "image": "img/dashbord.jpg",
-      
-      "telephone": "+212524341461",
-      "servesCuisine": ["Italian", "French", "Moroccan", "International", "Mediterranean", "Bakery", "Pastry", "Breakfast", "Lunch", "Dinner"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Doha forum 1 lot numéro 1, Magasin N°1, en face du complexe sportif Zerktouni",
-        "addressLocality": "Marrakech",
-        "addressCountry": "MA"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 31.6280687,
-        "longitude": -8.0537533
-      }
-    }
-    </script>
-
-    <script src="app.js" defer></script>
-  </body>
-  </html>
-
-
-
-
-
-
-
-
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="app.js" defer></script>
+</body>
+</html>
