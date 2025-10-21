@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy – MONQUOTIDIEN RENT CAR</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    /* ===== Theme ===== */
+    :root{
+      --bg:#0A192F;          /* dark navy */
+      --card:#0F203F;        /* deep blue */
+      --ink:#EAF2FF;         /* text */
+      --muted:#9FB0CC;       /* subdued */
+      --accent:#00BFA6;      /* teal */
+      --accent-2:#40E0D0;    /* gradient stop */
+      --ring:rgba(0,191,166,.45);
+      --radius:18px;
+      --shadow:0 14px 48px rgba(0,0,0,.35);
+      --line:linear-gradient(90deg, rgba(64,224,208,.25), rgba(0,191,166,.25));
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      background:
+        radial-gradient(1000px 500px at 10% -10%, rgba(64,224,208,.08), transparent 60%),
+        radial-gradient(900px 480px at 110% 10%, rgba(0,191,166,.08), transparent 55%),
+        var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* ===== Layout ===== */
+    .wrap{max-width:980px;margin:0 auto;padding:28px}
+    .card{
+      position:relative;
+      background:linear-gradient(135deg, var(--card) 0%, #0B1E36 100%);
+      border:1px solid rgba(64,224,208,.25);
+      border-radius:var(--radius);
+      padding:28px 24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius:calc(var(--radius) + 1px);
+      padding:1px;
+      background:conic-gradient(from 180deg, rgba(0,191,166,.35), rgba(64,224,208,.15), rgba(0,191,166,.35));
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude;
+      pointer-events:none;
+    }
+
+    /* ===== Header ===== */
+    .header{
+      display:flex; gap:16px; align-items:center; margin-bottom:6px;
+    }
+    .logo{
+      width:54px; height:54px; flex:0 0 auto;
+      filter:drop-shadow(0 8px 18px rgba(0,191,166,.35));
+    }
+    h1{
+      margin:0;
+      font-size:28px; letter-spacing:.2px;
+      background:linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 60%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .subtitle{margin:6px 0 18px 0; color:var(--muted)}
+
+    /* ===== Content ===== */
+    h2{
+      margin:24px 0 10px 0;
+      font-size:18px; color:var(--accent);
+    }
+    p{margin:0 0 10px 0}
+    ul{margin:8px 0 16px 20px; padding:0}
+    li{margin:6px 0}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{filter:brightness(1.1); text-decoration:underline}
+    .kbd{display:inline-block; padding:.1rem .45rem; border:1px solid rgba(255,255,255,.12); border-radius:8px; font-size:.86em; color:var(--ink); background:rgba(255,255,255,.03)}
+
+    /* ===== Footer / Meta ===== */
+    .meta{
+      margin-top:18px; padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted); font-size:12px;
+    }
+
+    /* ===== Callout ===== */
+    .callout{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px 14px; border-radius:12px;
+      background:rgba(0,191,166,.08);
+      border:1px solid rgba(0,191,166,.25);
+      margin:8px 0 18px 0;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:.45rem;flex:0 0 auto}
+
+    /* ===== Responsive ===== */
+    @media (max-width:560px){
+      .wrap{padding:18px}
+      .card{padding:20px}
+      h1{font-size:22px}
+      h2{font-size:17px}
+    }
+
+    /* ===== Print ===== */
+    @media print{
+      body{background:#fff;color:#111}
+      .card{box-shadow:none;border:1px solid #ddd}
+      a{text-decoration:underline}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <article class="card" role="article" aria-labelledby="pp-title">
+      <header class="header">
+        <!-- Inline SVG logo (pin + car) -->
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+          <path fill="#00BFA6" d="M32 4c-11.05 0-20 8.95-20 20 0 14.2 16.9 31.32 19.03 33.44a1.4 1.4 0 0 0 1.94 0C48.1 55.32 55.99 38.2 55.99 24 56 12.95 43.05 4 32 4Z"/>
+          <path fill="#fff" d="M44 32H20l2.6-7.8c.3-.9 1.2-1.5 2.2-1.5h14.3c1 0 1.9.6 2.2 1.5L44 32zM22 36a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm20 0a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+        </svg>
+        <div>
+          <h1 id="pp-title">Privacy Policy</h1>
+          <div class="subtitle">MONQUOTIDIEN RENT CAR</div>
+        </div>
+      </header>
+
+      <section class="callout" aria-label="Summary">
+        <span class="dot" aria-hidden="true"></span>
+        <p style="margin:0">
+          We provide a simple mobile app to browse car rental options and contact us via WhatsApp or email.
+          <strong>No in-app payments</strong> and <strong>no data collection</strong> inside the app.
+        </p>
+      </section>
+
+      <h2>1. Data We Collect</h2>
+      <p>We do <strong>not</strong> collect, store, share, or sell personal or sensitive information inside the app. If you send us a message via email or WhatsApp, we will receive the details you include in that message (e.g., name, preferred date, car model) solely to respond to your inquiry.</p>
+
+      <h2>2. Permissions</h2>
+      <p>The app does not request access to your location, contacts, camera, microphone, or storage.</p>
+
+      <h2>3. Booking Form</h2>
+      <p>When you submit the booking form, your message is prepared in your mail client and addressed to our team at
+        <a href="mailto:rent@monquotidien.ink">rent@monquotidien.ink</a>
+        (CC: <a href="mailto:support@monquotidien.ink">support@monquotidien.ink</a>).
+        We do not store these details in the app; they reside in your and our email accounts.</p>
+
+      <h2>4. Third-Party Services</h2>
+      <p>The app does not include analytics, ads, or trackers. When you choose to contact us via WhatsApp or email, your use of those services is governed by their respective privacy policies.</p>
+
+      <h2>5. Images and Content</h2>
+      <p>Car photos and descriptions are illustrative. They do not imply ownership or third-party endorsement.</p>
+
+      <h2>6. Children’s Privacy</h2>
+      <p>The app is not directed to children under 13, and we do not knowingly collect data from them.</p>
+
+      <h2>7. Contact Us</h2>
+      <p>
+        Email: <a href="mailto:rent@monquotidien.ink" class="kbd">rent@monquotidien.ink</a><br/>
+        Support: <a href="mailto:support@monquotidien.ink" class="kbd">support@monquotidien.ink</a><br/>
+        Phone/WhatsApp: <a href="https://wa.me/212646184451" class="kbd" rel="noopener">+212 646 184 451</a>
+      </p>
+
+      <p class="meta">Last updated: October 21, 2025</p>
+    </article>
+  </div>
+</body>
+</html>
